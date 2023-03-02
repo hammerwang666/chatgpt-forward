@@ -13,8 +13,10 @@ app.use(bodyParser());
 app.use(async (ctx) => {
   const { query, model, role } = ctx.request.body;
   if (!query) {
+    console.log('no query');
     return (ctx.body = 'hi');
   }
+  console.log('query:', { query });
   try {
     const completion = await openai.createChatCompletion({
       model,
