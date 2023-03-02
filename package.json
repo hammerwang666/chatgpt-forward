@@ -1,0 +1,27 @@
+{
+  "name": "chatgpt-forward",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhenfan0753/chatgpt-forward.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhenfan0753/chatgpt-forward/issues"
+  },
+  "homepage": "https://github.com/zhenfan0753/chatgpt-forward#readme",
+  "dependencies": {
+    "koa": "^2.14.1",
+    "koa-bodyparser": "^4.3.0",
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.4"
+  }
+}
