@@ -6,12 +6,15 @@ const configuration = new Configuration({
   apiKey: process.env.key,
 });
 const openai = new OpenAIApi(configuration);
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser());
 
 app.use(async (ctx) => {
   const { query, model, role } = ctx.request.body;
+  if (!query) {
+    return (ctx.body = 'hi');
+  }
   try {
     const completion = await openai.createChatCompletion({
       model,
