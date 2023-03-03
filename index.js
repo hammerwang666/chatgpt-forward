@@ -47,7 +47,7 @@ app.use(async (ctx) => {
     // ctx.body = chat_param;
     return;
   } catch (error) {
-    console.log('error', error);
+    console.log('error', error.stack);
   }
 });
 
