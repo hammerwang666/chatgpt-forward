@@ -11,17 +11,14 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser());
 
 app.use(async (ctx) => {
-  const { messages, model } = ctx.request.body;
-  if (!messages) {
+  const { params } = ctx.request.body;
+  if (!params) {
     console.log('no messages');
     return (ctx.body = 'hi');
   }
-  console.log('messages:', { model, messages });
+  console.log('params:', { params });
   try {
-    const completion = await openai.createChatCompletion({
-      model,
-      messages,
-    });
+    const completion = await openai.createChatCompletion(params);
     // console.log('completion', completion);
     const resObj = completion.data;
     ctx.body = resObj;
