@@ -11,16 +11,16 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser());
 
 app.use(async (ctx) => {
-  const { query, model, role } = ctx.request.body;
+  const { messages, model } = ctx.request.body;
   if (!query) {
     console.log('no query');
     return (ctx.body = 'hi');
   }
-  console.log('query:', { query });
+  console.log('messages:', { query, messages });
   try {
     const completion = await openai.createChatCompletion({
       model,
-      messages: [{ role, content: query }],
+      messages,
     });
     // console.log('completion', completion);
     const resObj = completion.data;
