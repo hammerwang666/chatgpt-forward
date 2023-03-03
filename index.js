@@ -12,11 +12,11 @@ app.use(bodyParser());
 
 app.use(async (ctx) => {
   const { messages, model } = ctx.request.body;
-  if (!query) {
-    console.log('no query');
+  if (!messages) {
+    console.log('no messages');
     return (ctx.body = 'hi');
   }
-  console.log('messages:', { query, messages });
+  console.log('messages:', { model, messages });
   try {
     const completion = await openai.createChatCompletion({
       model,
