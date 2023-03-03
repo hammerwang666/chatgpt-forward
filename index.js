@@ -18,9 +18,21 @@ app.use(async (ctx) => {
   }
   console.log('chat_param:', { chat_param });
   try {
-    const completion = await openai.createChatCompletion(chat_param);
-    // console.log('completion', completion);
+    const completion = await axios.post(
+      'https://api.openai.com/v1/chat/completions',
+      chat_param,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization:
+            'Bearer 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',
+        },
+        timeout: 500000,
+      },
+    );
+    // const completion = await openai.createChatCompletion(chat_param);
     const resObj = completion.data;
+    console.log('resObj', resObj);
     ctx.body = resObj;
   } catch (error) {
     console.log(error);
