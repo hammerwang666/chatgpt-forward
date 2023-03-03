@@ -35,7 +35,9 @@ app.use(async (ctx) => {
     //     timeout: 500000,
     //   },
     // );
-    const completion = await openai.createChatCompletion(chat_param);
+    const completion = await openai.createChatCompletion(chat_param, {
+      timeout: 500000,
+    });
     const resObj = completion.data;
     console.log('resObj', resObj);
     ctx.body = resObj;
