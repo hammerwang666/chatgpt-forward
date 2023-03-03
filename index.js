@@ -37,12 +37,13 @@ app.use(async (ctx) => {
     //     timeout: 500000,
     //   },
     // );
-    const completion = await openai.createChatCompletion(chat_param, {
-      timeout: 500000,
-    });
-    const resObj = completion.data;
-    console.log('resObj', resObj);
-    ctx.body = resObj;
+    // const completion = await openai.createChatCompletion(chat_param, {
+    //   timeout: 500000,
+    // });
+    // const resObj = completion.data;
+    // console.log('resObj', resObj);
+    // ctx.body = resObj;
+    ctx.body = chat_param;
     return;
   } catch (error) {
     console.log(error);
