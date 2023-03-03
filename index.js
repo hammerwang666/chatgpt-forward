@@ -23,6 +23,7 @@ app.use(async (ctx) => {
     return (ctx.body = 'hi');
   }
   // console.log('chat_param:', { chat_param: JSON.stringify(chat_param) });
+  console.log('chat_param00', ctx.request.body);
   console.log('chat_param11', chat_param);
   try {
     // const completion = await axios.post(
@@ -37,16 +38,16 @@ app.use(async (ctx) => {
     //     timeout: 500000,
     //   },
     // );
-    // const completion = await openai.createChatCompletion(chat_param, {
-    //   timeout: 500000,
-    // });
-    // const resObj = completion.data;
-    // console.log('resObj', resObj);
-    // ctx.body = resObj;
-    ctx.body = chat_param;
+    const completion = await openai.createChatCompletion(chat_param, {
+      // timeout: 500000,
+    });
+    console.log('completion', completion);
+    const resObj = completion.data;
+    ctx.body = resObj;
+    // ctx.body = chat_param;
     return;
   } catch (error) {
-    console.log(error);
+    console.log('error', error);
   }
 });
 
