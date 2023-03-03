@@ -9,9 +9,14 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 const port = process.env.PORT || 3000;
 
-app.use(bodyParser(), {
-  limit: '5mb',
-});
+app.use(
+  bodyParser({
+    limit: '10mb',
+    jsonLimit: '10mb',
+    textLimit: '10mb',
+    formLimit: '10mb',
+  }),
+);
 
 app.use(async (ctx) => {
   const { chat_param } = ctx.request.body;
@@ -20,7 +25,7 @@ app.use(async (ctx) => {
     return (ctx.body = 'hi');
   }
   // console.log('chat_param:', { chat_param: JSON.stringify(chat_param) });
-  console.log('chat_param00', ctx.request.body);
+  // console.log('chat_param00', ctx.request.body);
   console.log('chat_param11', chat_param);
   try {
     // const completion = await axios.post(
