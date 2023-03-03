@@ -10,9 +10,10 @@ const openai = new OpenAIApi(configuration);
 const port = process.env.PORT || 3000;
 
 app.use(
-  bodyParser({
-    limit: '800kb',
-  }),
+  bodyParser(),
+  //   {
+  //   limit: '800kb',
+  // }
 );
 
 app.use(async (ctx) => {
