@@ -21,7 +21,7 @@ app.use(async (ctx) => {
     console.log('no messages');
     return (ctx.body = 'hi');
   }
-  console.log('chat_param:', { chat_param });
+  console.log('chat_param:', { chat_param: JSON.stringify(chat_param) });
   try {
     const completion = await axios.post(
       'https://api.openai.com/v1/chat/completions',
