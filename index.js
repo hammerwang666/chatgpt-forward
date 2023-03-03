@@ -9,7 +9,11 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 const port = process.env.PORT || 3000;
 
-app.use(bodyParser());
+app.use(
+  bodyParser({
+    limit: '20mb',
+  }),
+);
 
 app.use(async (ctx) => {
   const { chat_param } = ctx.request.body;
