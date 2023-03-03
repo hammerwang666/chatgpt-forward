@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const app = new Koa();
-const axios = require('axios');
+// const axios = require('axios');
 const { Configuration, OpenAIApi } = require('openai');
 const configuration = new Configuration({
   apiKey: process.env.key,
@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 
 app.use(
   bodyParser({
-    limit: '20mb',
+    limit: '800kb',
   }),
 );
 
