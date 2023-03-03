@@ -9,12 +9,9 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 const port = process.env.PORT || 3000;
 
-app.use(
-  bodyParser(),
-  //   {
-  //   limit: '800kb',
-  // }
-);
+app.use(bodyParser(), {
+  limit: '5mb',
+});
 
 app.use(async (ctx) => {
   const { chat_param } = ctx.request.body;
@@ -39,7 +36,7 @@ app.use(async (ctx) => {
     //   },
     // );
     const completion = await openai.createChatCompletion(chat_param, {
-      // timeout: 500000,
+      timeout: 500000,
     });
     console.log('completion', completion);
     const resObj = completion.data;
